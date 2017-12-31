@@ -25,7 +25,7 @@ With the necessary propeties and methods.'''
     def __eq__(self,p):
 
         if not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
+            raise TypeError("Not an instance of class Point.")
         else:
             return self.x == p.x and self.y == p.y
 
@@ -33,14 +33,14 @@ With the necessary propeties and methods.'''
     def __add__(self,p):
 
         if not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
+            raise TypeError("Not an instance of class Point.")
         else:
             return Point (self.x + p.x, self.y + p.y)
         
     def __sub__(self,p):
 
         if  not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
+            raise TypeError("Not an instance of class Point.")
         else:
             return Point (self.x - p.x, self.y - p.y)
         
@@ -163,17 +163,17 @@ and a vector starting from the p1, and terminating at the second point, p2 .'''
 
 def main ():
     if __name__ =='__main__':
+        p1= Point (2,3)
+        p2= Point(4,14)
+        p3= Point (8,9)
+        
+        print (p1)
+        print (p2)
+        print (p3)
+    
+        print (p1.distance_from_point(p2))
+        print (p1.travelling_distance(p2))
 
-##        p1= Point (2,3)
-##        p2= Point(4,14)
-##        p3= Point (8,9)
-##
-##        print (p1)
-##        print (p2)
-##        print (p3)
-##
-##        print (p1.distance_from_point(p2))
-##        print (p1.travelling_distance(p2))
         p0 = Point (0,0)
         p1 = Point (1,5)
         p2 = Point (-1,5)
