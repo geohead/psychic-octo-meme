@@ -25,7 +25,7 @@ With the necessary propeties and methods.'''
     def __eq__(self,p):
 
         if not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
+            raise TypeError("Not an instance of class Point.")
         else:
             return self.x == p.x and self.y == p.y
 
@@ -33,14 +33,14 @@ With the necessary propeties and methods.'''
     def __add__(self,p):
 
         if not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
+            raise TypeError("Not an instance of class Point.")
         else:
             return Point (self.x + p.x, self.y + p.y)
         
     def __sub__(self,p):
 
         if  not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
+            raise TypeError("Not an instance of class Point.")
         else:
             return Point (self.x - p.x, self.y - p.y)
         
@@ -83,10 +83,11 @@ With the necessary propeties and methods.'''
     def travelling_distance (self, p):
         "Returns the distance btn two points following a line network"
         return ((abs(p.x - self.x)) +(abs(p.y - self.y)))
+    
 
     def angle_from (self,p):
         ''' The return value is the angle in the Cartesian plane formed by the x-axis,
-and a vector starting from the p1, and terminating at the second point, p2 .'''
+            and a vector starting from the p1, and terminating at the second point, p2 .'''
 
         dx = (p.x - self.x)
         dy = (p.y - self.y)
@@ -110,7 +111,7 @@ and a vector starting from the p1, and terminating at the second point, p2 .'''
         theta = atan2(dy,dx)
         angle =  degrees (theta)
 
-        # 
+        # condtional statement to workout which quadrant an angle fall from 1-4 resp
         if theta > 0 and theta <(pi/2):
             return 1, angle
         if theta > (pi/2) and theta <= pi:
@@ -121,8 +122,8 @@ and a vector starting from the p1, and terminating at the second point, p2 .'''
             return 4, (angle +360)
 
     def bearing_from (self,p):
-        ''' The return value bearing in the Cartesian plane formed by the y-axis/ north,
-and a vector starting from the p1, and terminating at the second point, p2 .'''
+        ''' The return value of bearing (angle from measurd from north),
+            and a vector starting from the p1, and terminating at the second point, p2 .'''
 
         dx = (p.x - self.x)
         dy = (p.y - self.y)
@@ -163,17 +164,17 @@ and a vector starting from the p1, and terminating at the second point, p2 .'''
 
 def main ():
     if __name__ =='__main__':
+        p1= Point (2,3)
+        p2= Point(4,14)
+        p3= Point (8,9)
+        
+        print (p1)
+        print (p2)
+        print (p3)
+    
+        print (p1.distance_from_point(p2))
+        print (p1.travelling_distance(p2))
 
-##        p1= Point (2,3)
-##        p2= Point(4,14)
-##        p3= Point (8,9)
-##
-##        print (p1)
-##        print (p2)
-##        print (p3)
-##
-##        print (p1.distance_from_point(p2))
-##        print (p1.travelling_distance(p2))
         p0 = Point (0,0)
         p1 = Point (1,5)
         p2 = Point (-1,5)
