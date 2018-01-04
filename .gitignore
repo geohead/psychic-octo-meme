@@ -2,3 +2,11 @@ __pycache__/
 line class.py
 linenotes.txt
 znotes.txt
+
+Point_class.pyc
+bearings.py
+intersection.py
+polygon_area.py
+test _line.txt
+
+.gitignore
