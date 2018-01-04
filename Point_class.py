@@ -13,45 +13,80 @@ from math import atan, atan2, cos, degrees, pi, radians,  sqrt, sin
 
 
 class Point (object):
+    
     ''' This point defines how we represent a point in 2D cartesian plane.
 With the necessary propeties and methods.'''
     
+    
     __slots__ = ('x','y')
     
-    def __init__(self, x,y):
+    
+    def __init__(self, x, y):
         self.x = x
         self.y = y
 
     def __eq__(self,p):
 
-        if not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
-        else:
+        if  isinstance (p,Point):
             return self.x == p.x and self.y == p.y
-
+        else:
+            return NotImplemented
 
     def __add__(self,p):
 
-        if not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
-        else:
+        if isinstance(p,Point):
             return Point (self.x + p.x, self.y + p.y)
+        else:
+            return NotImplemented
         
     def __sub__(self,p):
 
-        if  not isinstance(p,Point):
-            raise RuntimeError("Not an instance of class Point.")
-        else:
+        if isinstance(p,Point):
             return Point (self.x - p.x, self.y - p.y)
-        
+        else:
+            return NotImplemented
 
+
+    def __mul__(self, m):
+
+        if (isinstance(m,int) or (isinstance(m,float))):
+            return Point (self.x * m, self.y * m)
+        else:
+            return NotImplemented
+
+    def __rmul__(self,m):
+
+        return self.__mul__(m)
+    
+
+    def __truediv__(self, m):
+
+        if (isinstance(m,int) or (isinstance(m,float))):
+            return Point (self.x / m, self.y / m)
+        else:
+            return NotImplemented
+
+
+    def __neg__(self):
+
+        return Point (-self.x, -self.y)
+
+    def __abs__(self):
+
+        return Point (abs(self.x), abs(self.y))
+
+    def __round__(self,m):
+
+        return  Point (round(self.x,m),round (self.y,m))
+
+        
     def __getitem__(self,item):
         if item ==0:
             return self.x
         elif item == 1:
             return self.y
         else:
-            raise RuntimeError("Out if index.")
+            return None
 
     def __len__(self):
         return 2
@@ -77,11 +112,11 @@ With the necessary propeties and methods.'''
     
 
     def distance_from_point (self,p):
-        ''' Returns the distance between two points p1 and p2 of the Point class.'''
+        ''' Returns the straight line distance between the two points, p1 and p2 of the Point class.'''
         return sqrt(((self.x - p.x)**2) + ((self.y -p.y)**2))
     
     def travelling_distance (self, p):
-        "Returns the distance btn two points following a line network"
+        "Returns the distance btn two points following a line network (Manhattan Distance)"
         return ((abs(p.x - self.x)) +(abs(p.y - self.y)))
 
     def angle_from (self,p):
@@ -110,15 +145,14 @@ and a vector starting from the p1, and terminating at the second point, p2 .'''
         theta = atan2(dy,dx)
         angle =  degrees (theta)
 
-        # 
         if theta > 0 and theta <(pi/2):
-            return 1, angle
+            return  angle
         if theta > (pi/2) and theta <= pi:
-            return 2, angle
+            return angle
         if theta > (-pi) and theta < (-pi/2):
-            return 3, (angle +360 )
+            return (angle +360 )
         if theta > (-pi/2) and theta < 0:
-            return 4, (angle +360)
+            return (angle +360)
 
     def bearing_from (self,p):
         ''' The return value bearing in the Cartesian plane formed by the y-axis/ north,
