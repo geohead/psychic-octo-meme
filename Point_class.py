@@ -40,26 +40,26 @@ With the necessary propeties and methods.'''
 
     def __add__(self,p):
 
-<<<<<<< HEAD
+
         if isinstance(p,Point):
-=======
+
         if not isinstance(p,Point):
             raise TypeError("Not an instance of class Point.")
         else:
->>>>>>> a9b3d3ae068a4cc470476cdc0aa1cb899a579794
+
             return Point (self.x + p.x, self.y + p.y)
         else:
             return NotImplemented
         
     def __sub__(self,p):
 
-<<<<<<< HEAD
+
         if isinstance(p,Point):
-=======
+
         if  not isinstance(p,Point):
             raise TypeError("Not an instance of class Point.")
         else:
->>>>>>> a9b3d3ae068a4cc470476cdc0aa1cb899a579794
+
             return Point (self.x - p.x, self.y - p.y)
         else:
             return NotImplemented
