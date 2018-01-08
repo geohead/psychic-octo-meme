@@ -27,13 +27,8 @@ With the necessary propeties and methods.'''
 
     def __eq__(self,p):
 
-<<<<<<< HEAD
-        if  isinstance (p,Point):
-=======
-        if not isinstance(p,Point):
-            raise TypeError("Not an instance of class Point.")
-        else:
->>>>>>> a9b3d3ae068a4cc470476cdc0aa1cb899a579794
+        if isinstance(p,Point):
+
             return self.x == p.x and self.y == p.y
         else:
             return NotImplemented
@@ -43,10 +38,6 @@ With the necessary propeties and methods.'''
 
         if isinstance(p,Point):
 
-        if not isinstance(p,Point):
-            raise TypeError("Not an instance of class Point.")
-        else:
-
             return Point (self.x + p.x, self.y + p.y)
         else:
             return NotImplemented
@@ -55,11 +46,6 @@ With the necessary propeties and methods.'''
 
 
         if isinstance(p,Point):
-
-        if  not isinstance(p,Point):
-            raise TypeError("Not an instance of class Point.")
-        else:
-
             return Point (self.x - p.x, self.y - p.y)
         else:
             return NotImplemented
